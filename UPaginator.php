@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 28-01-2015
- * Time: 01:11 PM
- */
-
-
 
 namespace Application\Library;
 

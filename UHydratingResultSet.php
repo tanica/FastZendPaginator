@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 28-01-2015
- * Time: 05:55 PM
- */
+
 namespace Application\Library;
 
 class UHydratingResultSet extends  \Zend\Db\ResultSet\HydratingResultSet {

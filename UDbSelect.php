@@ -1,10 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: root
- * Date: 28-01-2015
- * Time: 01:10 PM
- */
+
 namespace Application\Library;
 use Zend\Db\Sql\Select;
 use Zend\Db\Sql\Expression;
