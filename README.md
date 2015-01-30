@@ -1,5 +1,5 @@
 #FastZendPaginator
-#sources PhpStorm
+sources PhpStorm
 
 Usage:
 
@@ -10,7 +10,8 @@ $paginator = new \Application\Library\UPaginator($adapter);
 return $paginator;
 
 
-//fixes cache issues with zend 2.2.4 paginator and makes use of Memcached possible
-//Zend looks for the setTags() method in the original Zend\Paginator\Paginator and fails in \Zend\Cache\Storage\Adapter\Memcached 
+Fixes cache issues with zend 2.2.4 paginator and makes use of Memcached possible
+
+Zend looks for the setTags() method in the original Zend\Paginator\Paginator and fails in \Zend\Cache\Storage\Adapter\Memcached 
 because the method setTags isn't found.
 
