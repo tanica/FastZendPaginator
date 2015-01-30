@@ -30,24 +30,31 @@ class UDbSelect extends  DbSelect {
         return $resultSet;
     }
     
-     public function count()
+    public function count()
     {
         if ($this->rowCount !== null) {
             return $this->rowCount;
         }
 
-        $select = clone $this->select;
-    
-                
+        $select = clone $this->select;  
         $select->reset(Select::LIMIT);
         $select->reset(Select::OFFSET);
         $select->reset(Select::ORDER);
         
         $countSelect = new Select;
-        $countSelect->columns(array('c' => new Expression('COUNT(1)')))->from(array(key($table['table']) => current($table['table'])))->where($select->getRawState("where"));
-
+        $state = $select->getRawState();
+        $countSelect->columns(array('c' => new Expression('COUNT(1)')))
+                ->from(array(key($state['table']) => current($state['table'])));
+        if(!empty($state['joins'])){
+            foreach($state['joins'] as $v){
+                $countSelect->join($v['name'],$v['on']);
+            }
+        }
+        $countSelect->where($select->getRawState("where"));
+        if(!empty($state['group'])){
+            $countSelect->group($state['group']);
+        }
         $statement = $this->sql->prepareStatementForSqlObject($countSelect);
-        
         $result    = $statement->execute();
         $row       = $result->current();
         
