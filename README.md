@@ -5,6 +5,8 @@ Fixes cache issues with zend 2.2.4 paginator and makes use of Memcached possible
 Usage:
 
 in your Mapper for example
+
+
 $adapter = new \Application\Library\UDbSelect($select,$this->getDbAdapter(),new UHydratingResultSet(new UserHydrator(),$this->getEntityPrototype()));
 
 $paginator = new \Application\Library\UPaginator($adapter);
@@ -13,10 +15,9 @@ return $paginator;
 
 
 #Src
-Zend\Paginator\Adapter\DbSelect 
+    Zend\Paginator\Adapter\DbSelect 
 
-
-public function getItemsByPage($pageNumber)
+    public function getItemsByPage($pageNumber)
     {
       $pageNumber = $this->normalizePageNumber($pageNumber);
 
@@ -54,13 +55,11 @@ public function getItemsByPage($pageNumber)
 
 in our Application\Library\UDbSelect rewrote the original count query, it's faster this way
 
-
-
-public function count()
+    public function count()
     {
-     if ($this->rowCount !== null) {
-        return $this->rowCount;
-    }
+        if ($this->rowCount !== null) {
+            return $this->rowCount;
+        }
 
         $select = clone $this->select;  
         $select->reset(Select::LIMIT);
