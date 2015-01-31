@@ -7,11 +7,10 @@ Usage:
 in your Mapper for example
 
 
-$adapter = new \Application\Library\UDbSelect($select,$this->getDbAdapter(),new UHydratingResultSet(new UserHydrator(),$this->getEntityPrototype()));
+    $adapter = new \Application\Library\UDbSelect($select,$this->getDbAdapter(),
+    new UHydratingResultSet(new UserHydrator(),$this->getEntityPrototype()));
 
-$paginator = new \Application\Library\UPaginator($adapter);
-
-return $paginator;
+    $paginator = new \Application\Library\UPaginator($adapter);
 
 
 #Src
