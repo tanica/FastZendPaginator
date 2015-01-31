@@ -58,9 +58,9 @@ in our Application\Library\UDbSelect rewrote the original count query, it's fast
 
 public function count()
     {
-        if ($this->rowCount !== null) {
-            return $this->rowCount;
-        }
+     if ($this->rowCount !== null) {
+        return $this->rowCount;
+    }
 
         $select = clone $this->select;  
         $select->reset(Select::LIMIT);
