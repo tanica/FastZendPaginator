@@ -4,7 +4,7 @@ Fixes cache issues with zend 2.2.4 paginator and makes use of Memcached possible
 
 Usage:
 
-in your Mapper for example
+Call your paginator like this
 
 
     $adapter = new \Application\Library\UDbSelect($select,$this->getDbAdapter(),
@@ -14,13 +14,14 @@ in your Mapper for example
 
 
 #Src
-    Zend\Paginator\Adapter\DbSelect 
+in Zend\Paginator\Adapter\DbSelect 
 
     public function getItemsByPage($pageNumber)
     {
       $pageNumber = $this->normalizePageNumber($pageNumber);
 
         if ($this->cacheEnabled()) {
+            //this never ever returns any data
             $data = static::$cache->getItem($this->_getCacheId($pageNumber));
             if ($data) {
                 return $data;
